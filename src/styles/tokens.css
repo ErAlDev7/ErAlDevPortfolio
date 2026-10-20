@@ -1,0 +1,129 @@
+/*
+ * Design tokens. Every color, size, radius, shadow and timing used on the site comes from here.
+ * Change the palette in the three theme blocks only. scripts/check-contrast.mjs reads them.
+ * Block 1 = light, block 2 = dark by system preference, block 3 = dark by user choice.
+ */
+
+:root {
+  color-scheme: light;
+  --bg: #f4f6f8;
+  --surface: #ebeff3;
+  --surface-2: #dfe5eb;
+  --line: #d3dae2;
+  --line-strong: #7a8796;
+  --text: #161e27;
+  --text-2: #4b5866;
+  --accent: #1e7fcd;
+  --accent-text: #115e9e;
+  --accent-btn: #176ab0;
+  --accent-btn-hover: #115e9e;
+  --on-accent: #ffffff;
+  --success: #1f7a55;
+  --warning: #8a5f00;
+  --error: #b3303a;
+  --frame: #dfe5eb;
+  --frame-bar: #cfd7e0;
+  --shadow-frame: 0 1px 2px rgb(22 30 39 / 0.08), 0 18px 40px -18px rgb(22 30 39 / 0.32);
+  --shadow-pop: 0 2px 4px rgb(22 30 39 / 0.1), 0 28px 60px -20px rgb(22 30 39 / 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #0b1118;
+    --surface: #121a23;
+    --surface-2: #1b2530;
+    --line: #243140;
+    --line-strong: #5f7186;
+    --text: #e8edf2;
+    --text-2: #9aa7b5;
+    --accent: #1e7fcd;
+    --accent-text: #4a9fe6;
+    --accent-btn: #176ab0;
+    --accent-btn-hover: #1e7fcd;
+    --on-accent: #ffffff;
+    --success: #3fbf8a;
+    --warning: #e5b84a;
+    --error: #f07178;
+    --frame: #1b2530;
+    --frame-bar: #243140;
+    --shadow-frame: 0 1px 2px rgb(0 0 0 / 0.4), 0 22px 44px -18px rgb(0 0 0 / 0.7);
+    --shadow-pop: 0 2px 4px rgb(0 0 0 / 0.4), 0 30px 64px -20px rgb(0 0 0 / 0.8);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b1118;
+  --surface: #121a23;
+  --surface-2: #1b2530;
+  --line: #243140;
+  --line-strong: #5f7186;
+  --text: #e8edf2;
+  --text-2: #9aa7b5;
+  --accent: #1e7fcd;
+  --accent-text: #4a9fe6;
+  --accent-btn: #176ab0;
+  --accent-btn-hover: #1e7fcd;
+  --on-accent: #ffffff;
+  --success: #3fbf8a;
+  --warning: #e5b84a;
+  --error: #f07178;
+  --frame: #1b2530;
+  --frame-bar: #243140;
+  --shadow-frame: 0 1px 2px rgb(0 0 0 / 0.4), 0 22px 44px -18px rgb(0 0 0 / 0.7);
+  --shadow-pop: 0 2px 4px rgb(0 0 0 / 0.4), 0 30px 64px -20px rgb(0 0 0 / 0.8);
+}
+
+/* Theme-independent tokens */
+:root {
+  --font-sans: var(--font-schibsted), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* Type scale (fluid) */
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-md: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --fs-lg: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  --fs-xl: clamp(1.625rem, 1.3rem + 1.2vw, 2.25rem);
+  --fs-2xl: clamp(2rem, 1.5rem + 2vw, 3rem);
+  --fs-3xl: clamp(2.25rem, 1.4rem + 3vw, 3.75rem);
+
+  --lh-body: 1.6;
+  --lh-tight: 1.08;
+  --tracking-display: -0.025em;
+  --tracking-head: -0.015em;
+  --tracking-mono: 0.02em;
+
+  /* Spacing, 4px base */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 9rem;
+  --section: clamp(3.5rem, 2.5rem + 4.5vw, 6.5rem);
+  --gutter: clamp(1rem, 0.4rem + 3vw, 2.5rem);
+
+  /* Layout */
+  --w-content: 75rem;
+  --w-wide: 80rem;
+  --w-text: 36rem;
+  --header-h: 4rem;
+
+  /* Shape */
+  --r-input: 2px;
+  --r-frame: 6px;
+  --r-device: 22px;
+
+  /* Motion */
+  --dur-fast: 120ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}

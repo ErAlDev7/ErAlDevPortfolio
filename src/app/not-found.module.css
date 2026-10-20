@@ -1,0 +1,60 @@
+.wrap {
+  display: grid;
+  justify-items: start;
+  gap: var(--s-5);
+  padding-block: var(--s-9) var(--s-10);
+  min-height: 60dvh;
+  align-content: center;
+}
+
+/* Built from outline strokes, like the E and D in the logo. */
+.code {
+  font-size: clamp(6rem, 3rem + 16vw, 14rem);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.title {
+  font-size: var(--fs-xl);
+}
+.text {
+  max-width: 44ch;
+  color: var(--text-2);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5);
+  margin-top: var(--s-4);
+}
+.primary {
+  position: relative;
+  isolation: isolate;
+  padding: 0.85rem 1.9rem 0.85rem 1.4rem;
+  font-weight: 500;
+  color: var(--on-accent);
+  text-decoration: none;
+}
+.primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent-btn);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.8rem) 100%, 0 100%);
+}
+.primary:hover::before {
+  background: var(--accent-btn-hover);
+}
+.secondary {
+  font-weight: 500;
+  text-decoration-color: var(--accent-text);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}

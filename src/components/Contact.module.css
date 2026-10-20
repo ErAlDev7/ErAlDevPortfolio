@@ -1,0 +1,154 @@
+.contact {
+  border-top: 1px solid var(--line);
+}
+
+.grid {
+  display: grid;
+  gap: var(--s-8);
+}
+
+.side {
+  display: grid;
+  gap: var(--s-5);
+  align-content: start;
+}
+.side p {
+  max-width: 34ch;
+  color: var(--text-2);
+}
+
+.direct {
+  display: grid;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+.direct li {
+  display: grid;
+  gap: var(--s-1);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
+}
+.direct .mono {
+  color: var(--text-2);
+}
+.direct a {
+  font-size: var(--fs-md);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.direct a:hover {
+  color: var(--accent-text);
+}
+
+.form {
+  display: grid;
+  gap: var(--s-5);
+  max-width: 40rem;
+}
+
+.field {
+  display: grid;
+  gap: var(--s-2);
+}
+.field label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.8rem var(--s-4);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-input);
+  color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 9rem;
+}
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--text-2);
+}
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+  border-color: var(--accent-text);
+}
+.field [aria-invalid='true'] {
+  border-color: var(--error);
+}
+
+.error {
+  display: flex;
+  gap: var(--s-2);
+  font-size: var(--fs-sm);
+  color: var(--error);
+}
+.error::before {
+  content: 'Error:';
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5);
+}
+
+.submit {
+  position: relative;
+  isolation: isolate;
+  padding: 0.95rem 2rem 0.95rem 1.6rem;
+  background: none;
+  border: 0;
+  font-weight: 500;
+  color: var(--on-accent);
+}
+.submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent-btn);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0 100%);
+  transition: background var(--dur-fast) var(--ease);
+}
+.submit:hover::before {
+  background: var(--accent-btn-hover);
+}
+
+.copy {
+  padding: var(--s-2) 0;
+  background: none;
+  border: 0;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-text);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+.copy:hover {
+  color: var(--accent-text);
+}
+
+.hint {
+  max-width: 46ch;
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--s-9);
+  }
+}

@@ -1,0 +1,59 @@
+.browser {
+  background: var(--frame);
+  border-radius: var(--r-frame);
+  box-shadow: var(--shadow-frame);
+  overflow: hidden;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  height: 2rem;
+  padding-inline: var(--s-3);
+  background: var(--frame-bar);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+.dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line-strong);
+  opacity: 0.55;
+}
+
+.url {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 2px var(--s-3);
+  border-radius: 3px;
+  background: var(--frame);
+  color: var(--text-2);
+  font-size: 0.6875rem;
+}
+
+.screen {
+  background: var(--surface);
+  line-height: 0;
+}
+
+.phone {
+  padding: 7px;
+  background: #05080c;
+  border-radius: var(--r-device);
+  box-shadow: var(--shadow-frame), inset 0 0 0 1px rgb(255 255 255 / 0.12);
+}
+
+.phoneScreen {
+  overflow: hidden;
+  border-radius: calc(var(--r-device) - 7px);
+  background: #05080c;
+  line-height: 0;
+}

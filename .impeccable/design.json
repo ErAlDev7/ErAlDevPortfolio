@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T00:00:00.000Z",
+  "title": "Design System: ErAlDev Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "accent": { "role": "primary", "displayName": "Logo Blue", "canonical": "#1e7fcd", "tonalRamp": ["#082a47", "#0d4170", "#115e9e", "#1e7fcd", "#4a9fe6", "#7bbaee", "#aed6f6", "#dcecfb"] },
+      "accent-btn": { "role": "primary", "displayName": "Button Blue", "canonical": "#176ab0", "tonalRamp": ["#071f36", "#0c3256", "#115e9e", "#176ab0", "#3d8bd0", "#6aaae0", "#a2cbee", "#d6e7f7"] },
+      "accent-text-light": { "role": "primary", "displayName": "Link Blue (light theme)", "canonical": "#115e9e", "tonalRamp": ["#061a2e", "#0a2b4b", "#0e4378", "#115e9e", "#2a7dc4", "#5a9fd8", "#9ac4ea", "#d0e4f6"] },
+      "accent-text-dark": { "role": "primary", "displayName": "Link Blue (dark theme)", "canonical": "#4a9fe6", "tonalRamp": ["#0b2f52", "#134a80", "#1e68ad", "#3a8ad6", "#4a9fe6", "#7bb9ee", "#aed4f5", "#dbeafa"] },
+      "bg-dark": { "role": "neutral", "displayName": "Page Ink", "canonical": "#0b1118", "tonalRamp": ["#05080c", "#0b1118", "#121a23", "#1b2530", "#243140", "#5f7186", "#9aa7b5", "#e8edf2"] },
+      "bg-light": { "role": "neutral", "displayName": "Page Paper", "canonical": "#f4f6f8", "tonalRamp": ["#161e27", "#4b5866", "#7a8796", "#d3dae2", "#dfe5eb", "#ebeff3", "#f4f6f8", "#ffffff"] },
+      "text-light": { "role": "neutral", "displayName": "Ink Text", "canonical": "#161e27", "tonalRamp": ["#0b1118", "#161e27", "#2b3744", "#4b5866", "#7a8796", "#a9b4c0", "#d3dae2", "#f4f6f8"] },
+      "error-light": { "role": "status", "displayName": "Error (light theme)", "canonical": "#b3303a", "tonalRamp": ["#4a1015", "#721a21", "#8f2530", "#b3303a", "#d05a62", "#e08a90", "#eeb9bd", "#f9e3e5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero statement only; project page titles use the 2xl step." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, 18ch measure." },
+      "title": { "displayName": "Title", "purpose": "Register project names, service names, next-project name." },
+      "lede": { "displayName": "Lede", "purpose": "Hero lede, project summaries, table row headings." },
+      "body": { "displayName": "Body", "purpose": "Running text at 1.0625rem." },
+      "body-small": { "displayName": "Body Small", "purpose": "Nav, chips, summaries, form labels, notes." },
+      "label": { "displayName": "Label (mono)", "purpose": "Data only: stacks, years, status, counts, hosts." }
+    },
+    "shadows": [
+      { "name": "shadow-frame", "value": "0 1px 2px rgb(22 30 39 / 0.08), 0 18px 40px -18px rgb(22 30 39 / 0.32)", "purpose": "Browser and phone screenshot frames (light theme). Dark: 0 1px 2px rgb(0 0 0 / 0.4), 0 22px 44px -18px rgb(0 0 0 / 0.7)." },
+      { "name": "shadow-pop", "value": "0 2px 4px rgb(22 30 39 / 0.1), 0 28px 60px -20px rgb(22 30 39 / 0.45)", "purpose": "Defined for floating elements; not yet used by any component." },
+      { "name": "thumb-current-ring", "value": "0 0 0 1px var(--accent-text)", "purpose": "State ring on the current carousel thumbnail." }
+    ],
+    "motion": [
+      { "name": "dur-fast", "value": "120ms", "purpose": "Color and border changes, button fill." },
+      { "name": "dur-base", "value": "240ms", "purpose": "Nav underline, arrow nudge, preview cross-fade, dialog fade." },
+      { "name": "dur-slow", "value": "420ms", "purpose": "Declared; unused in the build." },
+      { "name": "ease", "value": "cubic-bezier(0.2, 0, 0, 1)", "purpose": "Single easing for every transition." }
+    ],
+    "breakpoints": [
+      { "name": "cta", "value": "640px" },
+      { "name": "nav", "value": "860px" },
+      { "name": "split", "value": "900px" },
+      { "name": "hero", "value": "1000px" },
+      { "name": "register-preview", "value": "1200px" },
+      { "name": "hero-bleed-ends", "value": "1700px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (slanted cut)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single main action per view; right edge cut at about 60 degrees to echo the A in the logo.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">See the work</a>",
+      "css": ".ds-btn-primary { position: relative; isolation: isolate; display: inline-block; padding: 0.95rem 2rem 0.95rem 1.6rem; font-weight: 500; color: #fff; text-decoration: none; } .ds-btn-primary::before { content: ''; position: absolute; inset: 0; z-index: -1; background: var(--accent-btn, #176ab0); clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0 100%); transition: background 120ms cubic-bezier(0.2, 0, 0, 1); } .ds-btn-primary:hover::before { background: var(--accent-btn-hover, #115e9e); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent-text, #115e9e); outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Link Action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action paired with the primary button; 2px blue underline.",
+      "html": "<a class=\"ds-link\" href=\"#\">Write to us</a>",
+      "css": ".ds-link { font-weight: 500; text-decoration-line: underline; text-decoration-color: var(--accent-text, #115e9e); text-decoration-thickness: 2px; text-underline-offset: 0.35em; } .ds-link:hover { color: var(--accent-text, #115e9e); } .ds-link:focus-visible { outline: 2px solid var(--accent-text, #115e9e); outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "Outlined 2px-radius toggle with a mono count; selected state fills Button Blue.",
+      "html": "<button class=\"ds-chip\" aria-pressed=\"false\">Websites <span class=\"ds-chip-n\">4</span></button> <button class=\"ds-chip\" aria-pressed=\"true\">Mobile <span class=\"ds-chip-n\">2</span></button>",
+      "css": ".ds-chip { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.5rem 1rem; background: none; border: 1px solid var(--line-strong, #7a8796); border-radius: 2px; font-size: 0.9375rem; color: var(--text, #161e27); transition: background 120ms, border-color 120ms; cursor: pointer; } .ds-chip-n { font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.8125rem; color: var(--text-2, #4b5866); } .ds-chip:hover { border-color: var(--accent-text, #115e9e); } .ds-chip[aria-pressed='true'] { background: var(--accent-btn, #176ab0); border-color: var(--accent-btn, #176ab0); color: #fff; } .ds-chip[aria-pressed='true'] .ds-chip-n { color: #fff; } .ds-chip:focus-visible { outline: 2px solid var(--accent-text, #115e9e); outline-offset: 3px; }"
+    },
+    {
+      "name": "Register Row",
+      "kind": "custom",
+      "refersTo": "register-row",
+      "description": "A project as a ruled row: name, summary, mono stack, mono meta column, and a nudging arrow.",
+      "html": "<ul class=\"ds-list\"><li class=\"ds-item\"><a class=\"ds-row\" href=\"#\"><div class=\"ds-main\"><span class=\"ds-name\">E-Raporto</span><p class=\"ds-summary\">Reporting platform with a website and a mobile app.</p><span class=\"ds-mono\">React, React Native, C# Web API, PostgreSQL</span></div><div class=\"ds-meta ds-mono\"><span>Website + app</span><span>2025</span><span>Live</span></div><svg class=\"ds-arrow\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M6 14L14 6M7 6h7v7\"/></svg></a></li></ul>",
+      "css": ".ds-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line-strong, #7a8796); } .ds-item { border-bottom: 1px solid var(--line, #d3dae2); } .ds-row { display: grid; grid-template-columns: minmax(0, 1fr) 11rem 1.5rem; gap: 1rem; padding: 2rem 0.75rem; text-decoration: none; color: inherit; transition: background 120ms cubic-bezier(0.2, 0, 0, 1); } .ds-row:hover { background: var(--surface, #ebeff3); } .ds-main { display: grid; gap: 0.5rem; min-width: 0; } .ds-name { font-size: 1.75rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; } .ds-row:hover .ds-name { color: var(--accent-text, #115e9e); } .ds-summary { margin: 0; max-width: 46ch; color: var(--text-2, #4b5866); font-size: 0.9375rem; line-height: 1.55; } .ds-mono { font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.8125rem; letter-spacing: 0.02em; color: var(--text-2, #4b5866); line-height: 1.7; } .ds-meta { display: flex; flex-direction: column; gap: 0.25rem; padding-top: 0.5rem; } .ds-arrow { margin-top: 0.4rem; color: var(--text-2, #4b5866); transition: transform 240ms cubic-bezier(0.2, 0, 0, 1), color 240ms; } .ds-row:hover .ds-arrow { transform: translate(2px, -2px); color: var(--accent-text, #115e9e); } .ds-row:focus-visible { outline: 2px solid var(--accent-text, #115e9e); outline-offset: -2px; }"
+    },
+    {
+      "name": "Browser Frame",
+      "kind": "custom",
+      "refersTo": "browser-frame",
+      "description": "Screenshot in a 6px-radius browser frame with a dotted bar and a mono URL pill; the only elevated element.",
+      "html": "<div class=\"ds-browser\"><div class=\"ds-bar\"><span class=\"ds-dots\"><i></i><i></i><i></i></span><span class=\"ds-url\">e-raporto.example</span></div><div class=\"ds-screen\" style=\"height:140px\"></div></div>",
+      "css": ".ds-browser { background: var(--frame, #dfe5eb); border-radius: 6px; box-shadow: 0 1px 2px rgb(22 30 39 / 0.08), 0 18px 40px -18px rgb(22 30 39 / 0.32); overflow: hidden; } .ds-bar { display: flex; align-items: center; gap: 0.75rem; height: 2rem; padding-inline: 0.75rem; background: var(--frame-bar, #cfd7e0); } .ds-dots { display: flex; gap: 6px; } .ds-dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong, #7a8796); opacity: 0.55; } .ds-url { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 2px 0.75rem; border-radius: 3px; background: var(--frame, #dfe5eb); color: var(--text-2, #4b5866); font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.6875rem; } .ds-screen { background: var(--surface, #ebeff3); }"
+    },
+    {
+      "name": "Phone Frame",
+      "kind": "custom",
+      "refersTo": "phone-frame",
+      "description": "Device Black bezel, 22px radius, screenshot kept at its real 1080:2340 ratio.",
+      "html": "<div class=\"ds-phone\"><div class=\"ds-phone-screen\" style=\"aspect-ratio:1080/2340;background:#121a23\"></div></div>",
+      "css": ".ds-phone { width: 9rem; padding: 7px; background: #05080c; border-radius: 22px; box-shadow: 0 1px 2px rgb(22 30 39 / 0.08), 0 18px 40px -18px rgb(22 30 39 / 0.32), inset 0 0 0 1px rgb(255 255 255 / 0.12); } .ds-phone-screen { overflow: hidden; border-radius: 15px; background: #05080c; }"
+    },
+    {
+      "name": "Carousel Controls",
+      "kind": "custom",
+      "refersTo": "carousel",
+      "description": "Square outlined arrows with a mono count, and a thumbnail row where the current one is full opacity with a blue ring.",
+      "html": "<div class=\"ds-controls\"><button class=\"ds-arrow-btn\" aria-label=\"Previous\">&larr;</button><span class=\"ds-count\">3 of 12</span><button class=\"ds-arrow-btn\" aria-label=\"Next\">&rarr;</button></div><div class=\"ds-thumbs\"><span class=\"ds-thumb\"></span><span class=\"ds-thumb\" aria-current=\"true\"></span><span class=\"ds-thumb\"></span></div>",
+      "css": ".ds-controls { display: flex; align-items: center; gap: 1rem; } .ds-arrow-btn { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; background: none; border: 1px solid var(--line-strong, #7a8796); border-radius: 2px; color: var(--text, #161e27); cursor: pointer; transition: border-color 120ms, color 120ms; } .ds-arrow-btn:hover { border-color: var(--accent-text, #115e9e); color: var(--accent-text, #115e9e); } .ds-arrow-btn:focus-visible { outline: 2px solid var(--accent-text, #115e9e); outline-offset: 3px; } .ds-count { min-width: 11ch; text-align: center; font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.8125rem; color: var(--text-2, #4b5866); } .ds-thumbs { display: flex; gap: 0.5rem; margin-top: 1rem; } .ds-thumb { display: block; width: 6rem; height: 3.75rem; background: var(--surface, #ebeff3); border: 1px solid var(--line, #d3dae2); border-radius: 3px; opacity: 0.6; } .ds-thumb[aria-current='true'] { opacity: 1; border-color: var(--accent-text, #115e9e); box-shadow: 0 0 0 1px var(--accent-text, #115e9e); }"
+    },
+    {
+      "name": "Form Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Label above, Surface fill, 1px strong border, 2px radius; error is color plus the word Error.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-email\">Email</label><input id=\"ds-email\" type=\"email\" placeholder=\"you@company.com\"></div><div class=\"ds-field\"><label for=\"ds-bad\">Email</label><input id=\"ds-bad\" type=\"email\" aria-invalid=\"true\" value=\"name@\"><span class=\"ds-error\">Enter a complete email address.</span></div>",
+      "css": ".ds-field { display: grid; gap: 0.5rem; margin-bottom: 1.5rem; max-width: 24rem; } .ds-field label { font-size: 0.9375rem; font-weight: 500; } .ds-field input { width: 100%; padding: 0.8rem 1rem; background: var(--surface, #ebeff3); border: 1px solid var(--line-strong, #7a8796); border-radius: 2px; color: var(--text, #161e27); font: inherit; transition: border-color 120ms, background 120ms; } .ds-field input:hover { border-color: var(--text-2, #4b5866); } .ds-field input:focus-visible { outline: 2px solid var(--accent-text, #115e9e); outline-offset: 2px; border-color: var(--accent-text, #115e9e); } .ds-field input[aria-invalid='true'] { border-color: var(--error, #b3303a); } .ds-error { display: flex; gap: 0.5rem; font-size: 0.9375rem; color: var(--error, #b3303a); } .ds-error::before { content: 'Error:'; font-weight: 700; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Sticky 4rem bar with hairline bottom; links get a left-origin 1px blue underline on hover.",
+      "html": "<header class=\"ds-header\"><span class=\"ds-brand\">ErAl<span>Dev</span></span><nav class=\"ds-nav\"><a href=\"#\">Work</a><a href=\"#\">Services</a><a href=\"#\">Process</a><a href=\"#\">Contact</a></nav></header>",
+      "css": ".ds-header { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 4rem; padding-inline: 1rem; background: var(--bg, #f4f6f8); border-bottom: 1px solid var(--line, #d3dae2); } .ds-brand { font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; color: var(--text, #161e27); } .ds-brand span { color: var(--accent-text, #115e9e); } .ds-nav { display: flex; gap: 2rem; } .ds-nav a { position: relative; padding-block: 0.5rem; font-size: 0.9375rem; text-decoration: none; color: var(--text-2, #4b5866); transition: color 120ms; } .ds-nav a:hover { color: var(--text, #161e27); } .ds-nav a::after { content: ''; position: absolute; inset: auto 0 0 0; height: 1px; background: var(--accent-text, #115e9e); transform: scaleX(0); transform-origin: left; transition: transform 240ms cubic-bezier(0.2, 0, 0, 1); } .ds-nav a:hover::after { transform: scaleX(1); } .ds-nav a:focus-visible { outline: 2px solid var(--accent-text, #115e9e); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Specification Sheet",
+    "overview": "The site reads as a datasheet for a small software company, not a landing page. Work is a ruled register of real projects with specs (type, year, status, stack) and a sticky preview that follows the focused row. Real screenshots lead; the interface recedes behind hairline rules, square corners and one chromatic color taken from the logo.\n\nNeutrals are ink-blue, tinted toward the logo hue, in both a light and a dark theme (system preference, with a user toggle). Blue appears only on actions, links, active states and a rule above each process step. Type is one grotesk for everything and a mono face reserved for data: stacks, years, measurements, counts. Motion is short and functional.\n\nThe build refuses the centered hero, card grid and icon-in-circle template. Containers are square; rounding is reserved for inputs, screenshot frames and phone devices, where it describes a real object.",
+    "keyCharacteristics": [
+      "Hairline rules (1px) divide sections, rows and table lines instead of boxes or cards.",
+      "One chromatic color (logo blue) with a separate text-safe and button-safe variant per theme.",
+      "A 60-degree slanted cut on primary buttons echoes the A in the logo.",
+      "Screenshots sit in browser and phone frames; the frame is the only elevated element.",
+      "Both themes meet WCAG AA; focus is always visible."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Logo blue is the only chromatic color. Status colors appear only for status.", "section": "colors" },
+      { "name": "The Text-Safe Rule", "body": "Blue used as text, outline or underline must be the accent-text variant; blue used as a fill behind white text must be accent-btn. The raw logo blue is for non-text marks.", "section": "colors" },
+      { "name": "The Data Is Mono Rule", "body": "Mono type carries only data: stacks, years, measurements, counts, hosts. Never headings, never decoration.", "section": "typography" },
+      { "name": "The Three Weights Rule", "body": "400 reads, 500 acts (links, buttons, labels, lead lines), 700 announces. No other weights are loaded.", "section": "typography" },
+      { "name": "The Vary the Split Rule", "body": "Adjacent sections must not repeat the same column composition.", "section": "layout" },
+      { "name": "The Frames Only Rule", "body": "Shadows are soft, long, low-opacity, and belong to screenshot frames. Containers, buttons, chips and fields never cast one.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do separate content with 1px rules (line for rows, line-strong for the top of a list or table) rather than boxes.",
+      "Do use accent-btn behind white text and accent-text for blue text; check both themes.",
+      "Do use the slanted-cut primary button for the single main action in a view; pair it with a text link, not a second button.",
+      "Do set stacks, years, counts and hosts in JetBrains Mono at 0.8125rem with tabular numerals.",
+      "Do keep container corners square; use 2px for inputs and chips, 6px for screenshot frames, 22px for phones.",
+      "Do show real screenshots inside the browser or phone frame and keep the phone at its true aspect ratio.",
+      "Do vary column composition between adjacent sections, and keep body measure to roughly 34 to 52ch.",
+      "Do keep a visible 2px Link Blue focus outline on every interactive element, and pair error color with the word \"Error:\"."
+    ],
+    "donts": [
+      "Don't build a centered hero, a card grid or icon-in-circle feature blocks.",
+      "Don't add a second chromatic color, gradients, or tinted decorative blobs.",
+      "Don't cast shadows on anything but screenshot frames.",
+      "Don't use mono type for headings or decoration, or set short uppercase labels above headings.",
+      "Don't invent metrics, client logos or testimonials; content must trace to a real project.",
+      "Don't use raw Logo Blue as text or as a button fill behind white text.",
+      "Don't animate layout properties or add motion longer than 240ms to interface states."
+    ]
+  }
+}

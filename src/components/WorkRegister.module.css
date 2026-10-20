@@ -1,0 +1,241 @@
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--s-5);
+  margin-bottom: var(--s-7);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.filter {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-4);
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-input);
+  font-size: var(--fs-sm);
+  color: var(--text);
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.filter .mono {
+  color: var(--text-2);
+}
+.filter:hover {
+  border-color: var(--accent-text);
+}
+.filter[aria-pressed='true'] {
+  background: var(--accent-btn);
+  border-color: var(--accent-btn);
+  color: var(--on-accent);
+}
+.filter[aria-pressed='true'] .mono {
+  color: var(--on-accent);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s-6);
+}
+
+.list {
+  border-top: 1px solid var(--line-strong);
+}
+
+.item {
+  border-bottom: 1px solid var(--line);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1.5rem;
+  gap: var(--s-4);
+  padding: var(--s-5) 0;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease);
+}
+.row:hover,
+.item[data-active='true'] .row:focus-visible {
+  background: var(--surface);
+}
+.row:focus-visible {
+  outline-offset: -2px;
+}
+
+.main {
+  display: grid;
+  gap: var(--s-2);
+  min-width: 0;
+}
+.name {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-display);
+}
+.row:hover .name {
+  color: var(--accent-text);
+}
+.summary {
+  max-width: 46ch;
+  color: var(--text-2);
+  font-size: var(--fs-sm);
+  line-height: 1.55;
+}
+.stack {
+  color: var(--text-2);
+  line-height: 1.7;
+}
+
+.meta {
+  grid-column: 1 / 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  color: var(--text-2);
+}
+.status {
+  color: var(--text);
+}
+
+.arrow {
+  grid-row: 1;
+  grid-column: 2;
+  margin-top: 0.4rem;
+  color: var(--text-2);
+  transition: transform var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
+}
+.arrow path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+.row:hover .arrow path,
+.row:focus-visible .arrow path {
+  animation: draw 380ms var(--ease);
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+.row:hover .arrow {
+  transform: translate(2px, -2px);
+  color: var(--accent-text);
+}
+
+.inline {
+  padding: 0 0 var(--s-6);
+}
+.inline .phone {
+  width: min(12rem, 52%);
+}
+
+.panel {
+  display: none;
+}
+
+/* Previews */
+.browser {
+  width: 100%;
+}
+.phone {
+  width: 100%;
+}
+.textPreview {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-6);
+  background: var(--surface);
+  border-radius: var(--r-frame);
+  border: 1px solid var(--line);
+}
+.textName {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+}
+.textHost {
+  color: var(--text-2);
+}
+
+@media (min-width: 1200px) {
+  .body {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--s-8);
+    align-items: start;
+  }
+
+  .row {
+    grid-template-columns: minmax(0, 1fr) 11rem 1.5rem;
+    padding: var(--s-6) var(--s-3);
+  }
+  .meta {
+    grid-column: 2;
+    grid-row: 1;
+    flex-direction: column;
+    gap: var(--s-1);
+    padding-top: 0.5rem;
+  }
+  .arrow {
+    grid-column: 3;
+  }
+
+  .inline {
+    display: none;
+  }
+
+  .panel {
+    display: block;
+    position: sticky;
+    top: calc(var(--header-h) + var(--s-6));
+  }
+  .panelInner {
+    position: relative;
+    container-type: size;
+    aspect-ratio: 4 / 3;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-frame);
+    overflow: hidden;
+  }
+  .layer {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--s-7);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity var(--dur-base) var(--ease), transform var(--dur-base) var(--ease);
+    pointer-events: none;
+  }
+  .layer[data-on='true'] {
+    opacity: 1;
+    transform: none;
+  }
+  .layer .browser {
+    width: 100%;
+  }
+  /* Phone screenshots keep their real 1080:2340 ratio; width follows the panel's height. */
+  .layer .phone {
+    width: calc(80cqh * 1080 / 2340 + 14px);
+  }
+  .layer .textPreview {
+    width: 100%;
+    background: none;
+    border: 0;
+  }
+
+  .caption {
+    margin-top: var(--s-3);
+    color: var(--text-2);
+  }
+}

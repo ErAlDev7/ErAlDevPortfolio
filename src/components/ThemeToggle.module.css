@@ -1,0 +1,44 @@
+.btn {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--r-input);
+  color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.btn:hover {
+  border-color: var(--accent-text);
+  color: var(--accent-text);
+}
+
+/* Show the icon for the theme you would switch to. */
+.btn svg {
+  grid-area: 1 / 1;
+}
+.sun {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .moon {
+    display: none;
+  }
+  :root:not([data-theme='light']) .sun {
+    display: block;
+  }
+}
+:root[data-theme='dark'] .moon {
+  display: none;
+}
+:root[data-theme='dark'] .sun {
+  display: block;
+}
+:root[data-theme='light'] .moon {
+  display: block;
+}
+:root[data-theme='light'] .sun {
+  display: none;
+}

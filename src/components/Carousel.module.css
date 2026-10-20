@@ -1,0 +1,121 @@
+.root {
+  display: grid;
+  gap: var(--s-4);
+}
+
+.track {
+  position: relative;
+  display: flex;
+  gap: var(--s-5);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-block: var(--s-3) var(--s-5);
+}
+.track::-webkit-scrollbar {
+  display: none;
+}
+.track:focus-visible {
+  outline-offset: 4px;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  min-width: 0;
+}
+.root[data-kind='mobile'] .slide {
+  flex: 0 0 clamp(8.5rem, 52%, 11rem);
+}
+
+.open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  text-align: inherit;
+  cursor: zoom-in;
+}
+.open:focus-visible {
+  outline-offset: 5px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+}
+.count {
+  min-width: 11ch;
+  text-align: center;
+  color: var(--text-2);
+}
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  background: none;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-input);
+  color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.arrow:hover:not(:disabled) {
+  border-color: var(--accent-text);
+  color: var(--accent-text);
+}
+.arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.thumbs {
+  display: flex;
+  gap: var(--s-2);
+  overflow-x: auto;
+  padding-block: var(--s-1) var(--s-3);
+  scrollbar-width: thin;
+}
+.thumbs li {
+  flex: none;
+}
+.thumb {
+  display: block;
+  width: 5rem;
+  padding: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  line-height: 0;
+  opacity: 0.6;
+  transition: opacity var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.thumbs[data-kind='mobile'] .thumb {
+  width: 2.75rem;
+}
+.thumb:hover {
+  opacity: 1;
+}
+.thumb[aria-current='true'] {
+  opacity: 1;
+  border-color: var(--accent-text);
+  box-shadow: 0 0 0 1px var(--accent-text);
+}
+
+@media (min-width: 900px) {
+  .root[data-kind='mobile'] .slide {
+    flex-basis: 11rem;
+  }
+  .root[data-kind='website'] .slide {
+    flex-basis: calc(50% - var(--s-5) / 2);
+  }
+}
+
+.hint {
+  margin-left: auto;
+  color: var(--text-2);
+}

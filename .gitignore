@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+public/media
+src/data/media.generated.json
+.claude/settings.local.json
+.impeccable/review
+.impeccable/mocks
+.claude/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/build/
+.impeccable/hook.cache.json

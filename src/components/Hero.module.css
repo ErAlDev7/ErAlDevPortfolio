@@ -1,0 +1,153 @@
+.hero {
+  padding-block: var(--s-8) var(--s-7);
+  overflow-x: clip;
+}
+
+.inner {
+  display: grid;
+  gap: var(--s-8);
+  align-items: center;
+}
+
+.title {
+  font-size: clamp(2.125rem, 1.3rem + 3.2vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-display);
+  max-width: 16ch;
+}
+
+.lede {
+  margin-top: var(--s-6);
+  max-width: 34rem;
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-5);
+  margin-top: var(--s-7);
+}
+
+.primary {
+  position: relative;
+  isolation: isolate;
+  padding: 0.95rem 2rem 0.95rem 1.6rem;
+  font-weight: 500;
+  color: var(--on-accent);
+  text-decoration: none;
+}
+.primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent-btn);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.85rem) 100%, 0 100%);
+  transition: background var(--dur-fast) var(--ease);
+}
+.primary:hover::before {
+  background: var(--accent-btn-hover);
+}
+
+.secondary {
+  font-weight: 500;
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent-text);
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 2px;
+}
+.secondary:hover {
+  color: var(--accent-text);
+}
+
+.stack {
+  margin-top: var(--s-8);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line);
+  max-width: 34rem;
+  color: var(--text-2);
+  line-height: 1.8;
+}
+.stack span {
+  color: var(--text);
+}
+
+.stage {
+  position: relative;
+  margin: 0;
+  padding-bottom: var(--s-7);
+  padding-left: var(--s-6);
+}
+.browser {
+  width: 100%;
+}
+.phone {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 27%;
+  min-width: 5.5rem;
+}
+.caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: var(--text-2);
+  font-size: 0.6875rem;
+}
+
+@media (min-width: 1000px) {
+  .hero {
+    padding-block: var(--s-8) var(--s-7);
+  }
+  .inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--s-8);
+  }
+  .stage {
+    /* The composition runs past the content edge so it reads as a view into the work, not a card. */
+    margin-right: 0;
+    padding-left: 11%;
+  }
+  .phone {
+    width: 21%;
+  }
+}
+
+@media (min-width: 1700px) {
+  .stage {
+    margin-right: 0;
+  }
+}
+
+/* One authored moment: the hero text rises into place once on load. Nothing starts invisible or blurred, so first paint is unchanged. */
+@keyframes settle {
+  from {
+    transform: translateY(10px);
+  }
+}
+.title,
+.lede,
+.cta,
+.stack {
+  animation: settle var(--dur-slow) var(--ease) backwards;
+}
+.lede {
+  animation-delay: 70ms;
+}
+.cta {
+  animation-delay: 140ms;
+}
+.stack {
+  animation-delay: 200ms;
+}
+
+.stageLink {
+  position: absolute;
+  inset: 0 0 var(--s-7) 0;
+  z-index: 2;
+}

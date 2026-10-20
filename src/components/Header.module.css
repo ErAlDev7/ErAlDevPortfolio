@@ -1,0 +1,138 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  height: 100%;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-3);
+  text-decoration: none;
+  color: var(--text);
+}
+.name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+.name span {
+  color: var(--accent-text);
+}
+
+.nav {
+  display: none;
+}
+.nav a {
+  position: relative;
+  padding-block: var(--s-2);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  color: var(--text-2);
+  transition: color var(--dur-fast) var(--ease);
+}
+.nav a:hover {
+  color: var(--text);
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 1px;
+  background: var(--accent-text);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease);
+}
+.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.cta {
+  display: none;
+  position: relative;
+  isolation: isolate;
+  padding: 0.6rem 1.25rem 0.6rem 1.1rem;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--on-accent);
+  text-decoration: none;
+}
+/* The slanted right edge repeats the 60 degree cut of the A in the logo. */
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent-btn);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.55rem) 100%, 0 100%);
+  transition: background var(--dur-fast) var(--ease);
+}
+.cta:hover::before {
+  background: var(--accent-btn-hover);
+}
+
+.menu {
+  height: 2.5rem;
+  padding-inline: var(--s-4);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--r-input);
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 859px) {
+  .navOpen {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    padding: var(--s-4) var(--gutter) var(--s-6);
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .navOpen a {
+    padding-block: var(--s-4);
+    font-size: var(--fs-md);
+    color: var(--text);
+    border-bottom: 1px solid var(--line);
+  }
+  .navOpen a::after {
+    display: none;
+  }
+}
+
+@media (min-width: 860px) {
+  .nav {
+    display: flex;
+    gap: var(--s-6);
+  }
+  .menu {
+    display: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .cta {
+    display: inline-block;
+  }
+}

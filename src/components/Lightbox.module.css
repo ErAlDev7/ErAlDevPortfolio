@@ -1,0 +1,131 @@
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: var(--s-3) var(--s-4);
+  border: 0;
+  background: #05080c;
+  color: #e8edf2;
+  display: none;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: var(--s-3);
+}
+.dialog[open] {
+  display: grid;
+  animation: fade var(--dur-base) var(--ease);
+}
+.dialog::backdrop {
+  background: transparent;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.barActions {
+  display: flex;
+  gap: var(--s-2);
+}
+
+.btn {
+  padding: var(--s-2) var(--s-4);
+  background: none;
+  border: 1px solid #5f7186;
+  border-radius: var(--r-input);
+  color: #e8edf2;
+  font-size: var(--fs-sm);
+}
+.btn:hover {
+  border-color: #9aa7b5;
+}
+.dialog :focus-visible {
+  outline-color: #4a9fe6;
+}
+
+.stage {
+  position: relative;
+  min-height: 0;
+}
+
+/* Image and caption sit together, centred in the space under the toolbar. */
+.viewer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  overflow: hidden;
+}
+/* Zoomed: real pixel size, scrollable. */
+.viewer[data-zoomed='true'] {
+  display: block;
+  overflow: auto;
+}
+.viewer picture {
+  display: contents;
+}
+.img {
+  flex: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100dvh - 9.5rem);
+  object-fit: contain;
+  cursor: zoom-in;
+  animation: fade var(--dur-base) var(--ease);
+}
+.viewer[data-zoomed='true'] .img {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  background: rgb(5 8 12 / 0.75);
+  border: 1px solid #5f7186;
+  border-radius: var(--r-input);
+  color: #e8edf2;
+}
+.prev {
+  left: var(--s-2);
+}
+.next {
+  right: var(--s-2);
+}
+.nav:hover:not(:disabled) {
+  border-color: #9aa7b5;
+}
+.nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.alt {
+  flex: none;
+  max-width: 70ch;
+  margin-inline: auto;
+  padding-inline: var(--s-4);
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: #9aa7b5;
+}
